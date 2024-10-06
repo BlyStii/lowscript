@@ -1,0 +1,25 @@
+{
+  "name": "lowscript",
+  "displayName": "LowScript",
+  "description": "LowScript is an interpreted language made entirely in LUA and converted into a stand-alone EXE file. It was created for programmers that want to code fast with a easy language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "lowscript",
+      "aliases": ["LowScript Programming Language", "lowscript"],
+      "extensions": [".ls", ".lowscript"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "lowscript",
+      "scopeName": "source.lowscript",
+      "path": "./syntaxes/lowscript.tmLanguage.json"
+    }]
+  }
+}

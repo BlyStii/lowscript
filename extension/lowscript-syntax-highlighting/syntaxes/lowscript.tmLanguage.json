@@ -1,0 +1,149 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "LowScript Programming Language",
+	"patterns": [
+		{
+			"include": "#escape"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#bools"
+		},
+		{
+			"include": "#null"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#calls"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#parameters"
+		}
+	],
+	"repository": {
+		"escape": {
+			"name": "constant.character.escape.lowscript",
+			"match": "\\\\."
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.lowscript",
+					"begin": "#\\*",
+					"end": "#"
+				},
+				{
+					"name": "comment.line",
+					"begin": "#",
+					"end": "\\n"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.arithmetic.lowscript",
+					"match": "[\\+\\-\\*\\/]"
+				},
+				{
+					"name": "keyword.operator.comparison.lowscript",
+					"match": "[=!]=|[<>]=?"
+				},
+				{
+					"name": "keyword.operator.assignment.lowscript",
+					"match": "(?<![=!<>]):?=(?!=)"
+				},
+				{
+					"name": "keyword.operator.logical.lowscript",
+					"match": "\\||&|!(?!=)|\\^"
+				},
+				{
+					"name": "keyword.operator.accessor.lowscript",
+					"match": "\\."
+				},
+				{
+					"name": "punctuation.definition.interpolation",
+					"match": "\\$"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.lowscript",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.lowscript",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.lowscript",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.lowscript",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "punctuation.definition.interpolation",
+					"match": "(\\$\"[^\\{\"]*[^\\{])|((?<=\\$\"[\\s\\S]*\\})(?<![^\\$]\"[\\s\\S]*\\})[^\\}]*?\")|((?<=\\$\"[\\s\\S]*\\})(?<![^\\$]\"[\\s\\S]*\\})[^\\}]*?(?=\\{[\\s\\S]*\"))",
+					"patterns": [
+						{
+							"name": "constant.character.escape.lowscript",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"match": "\\d"
+		},
+		"bools": {
+			"name": "constant.language.boolean",
+			"match": "\\b(true|false)\\b"
+		},
+		"null": {
+			"name": "constant.language.null",
+			"match": "\\b(null)\\b"
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.lowscript",
+					"match": "\\b(if|for|foreach|while|repeat|return|break|continue|in|class|func|self|number|string|bool|list|function|file)\\b"
+				}
+			]
+		},
+		"calls": {
+			"name": "entity.name.function",
+			"match": "\\w+(?=\\()"
+		},
+		"parameters": {
+			"name": "entity.other.attribute-name",
+			"match": "((?<=(class|func)\\s*\\w*\\s*\\()([\\s\\w](?<=[^\\d]))*)|((?<=(class|func)\\s*\\w*\\s*\\([\\s\\S]*)(?<=,)([\\s\\w](?<=[^\\d]))*)"
+		}
+	},
+	"scopeName": "source.lowscript"
+}
